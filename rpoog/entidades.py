@@ -87,6 +87,6 @@ class Personagem:
             f"----------------------------------------\n"
             f" Atributos: [{self.atributos}]\n"
             f"----------------------------------------\n"
-            f"{self.inventario}"
+            f"{self.inventario}\n"
             f"========================================\n"
         )
