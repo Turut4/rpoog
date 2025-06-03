@@ -1,8 +1,15 @@
 # entidades.py
 
 from __future__ import annotations
-from itens import Inventario, Arma
-from patterns import IEstrategiaAtaque
+from .itens import Inventario, Arma
+from abc import ABC, abstractmethod
+
+
+class IEstrategiaAtaque(ABC):
+    """Interface para as diferentes formas de ataque."""
+    @abstractmethod
+    def atacar(self, atacante: 'Personagem', alvo: 'Personagem'):
+        pass
 
 
 class Atributos:

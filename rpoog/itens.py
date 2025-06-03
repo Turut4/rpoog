@@ -1,5 +1,3 @@
-# itens.py
-
 from enum import Enum
 
 
@@ -26,7 +24,7 @@ class Item:
 
 
 class Arma(Item):
-    """Uma especializa��o de Item."""
+    """Uma especialização de Item."""
 
     def __init__(self, nome: str, descricao: str, peso: float, raridade: RaridadeItem, dano: int):
         super().__init__(nome, descricao, peso, raridade, TipoItem.ARMA)
@@ -37,7 +35,7 @@ class Arma(Item):
 
 
 class Pocao(Item):
-    """Outra especializa��o de Item."""
+    """Outra especialização de Item."""
 
     def __init__(self, nome: str, descricao: str, peso: float, raridade: RaridadeItem, cura: int):
         super().__init__(nome, descricao, peso, raridade, TipoItem.POCAO)
@@ -62,6 +60,6 @@ class Inventario:
 
     def __str__(self):
         if not self.itens:
-            return "Invent�rio: Vazio"
+            return "Inventário: Vazio"
         lista_itens = "\n".join([f"  {item}" for item in self.itens])
         return f"Invent�rio ({len(self.itens)}/{self.capacidade}):\n{lista_itens}"

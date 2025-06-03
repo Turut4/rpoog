@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from entidades import Personagem, Raca, Classe, Atributos
-from itens import Item
+from .entidades import Personagem, Raca, Classe, Atributos
+from .itens import Item
 
 
 class IBuilderPersonagem(ABC):

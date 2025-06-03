@@ -37,8 +37,8 @@ def main():
     print(guerreiro)
     print(mago)
 
-    guerreiro.definir_estrategia_ataque(AtaqueFisico())
-    mago.definir_estrategia_ataque(AtaqueMagico())
+    guerreiro.definir_estrategia_ataque(AtaqueFisico())  # type: ignore
+    mago.definir_estrategia_ataque(AtaqueMagico())  # type: ignore
 
     print("\n>>> O COMBATE COMEÇA! <<<\n")
 

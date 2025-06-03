@@ -1,8 +1,6 @@
-# factories.py
-
 from abc import ABC, abstractmethod
-from entidades import Raca, Classe, Atributos
-from itens import Item, Arma, Pocao, RaridadeItem
+from .entidades import Raca, Classe, Atributos
+from .itens import Item, Arma, Pocao, RaridadeItem
 
 
 class ItemFactory:
@@ -29,7 +27,7 @@ class IPersonagemFactory(ABC):
 
 
 class GuerreiroFactory(IPersonagemFactory):
-    """F�brica concreta para o arqu�tipo Guerreiro."""
+    """Fábrica concreta para o arquetipo Guerreiro."""
 
     def criar_raca(self) -> Raca:
         return Raca("An�o", Atributos(forca=2, vigor=2, sorte=-1))
@@ -44,13 +42,13 @@ class GuerreiroFactory(IPersonagemFactory):
         item_factory = ItemFactory()
         arma = item_factory.criar_item(
             'arma', nome="Machado de An�o", descricao="Um machado robusto.", peso=5.0, raridade=RaridadeItem.INCOMUM, dano=12)
-        pocao = item_factory.criar_item('pocao', nome="Po��o de Cura Menor",
+        pocao = item_factory.criar_item('pocao', nome="Poção de Cura Menor",
                                         descricao="Restaura um pouco de vida.", peso=0.5, raridade=RaridadeItem.COMUM, cura=20)
         return [arma, pocao]
 
 
 class MagoFactory(IPersonagemFactory):
-    """F�brica concreta para o arqu�tipo Mago."""
+    """Fábrica concreta para o arqu�tipo Mago."""
 
     def criar_raca(self) -> Raca:
         return Raca("Elfo", Atributos(inteligencia=2, destreza=2, vigor=-1))
