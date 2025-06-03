@@ -1,41 +1,68 @@
-from rpoog.entidades import BuilderPersonagem, Diretor, Raca, Atributos, Classe
+# main.py
+
+import time
+from rpoog.patterns import BuilderPersonagem, AtaqueFisico, AtaqueMagico
+from rpoog.factories import IPersonagemFactory, GuerreiroFactory, MagoFactory
+from rpoog.entidades import Personagem
+
+
+def criar_personagem_com_factory(factory: IPersonagemFactory, nome: str) -> Personagem:
+    """Usa uma Fábrica para obter as partes e um Builder para montar o personagem."""
+    builder = BuilderPersonagem()
+
+    # A fábrica fornece os componentes do "kit"
+    raca = factory.criar_raca()
+    classe = factory.criar_classe()
+    atributos_base = factory.definir_atributos_base()
+    equipamento_inicial = factory.criar_equipamento_inicial()
+
+    # O builder monta o personagem final
+    builder.set_nome(nome)\
+           .set_raca(raca)\
+           .set_classe(classe)\
+           .set_atributos_base(**atributos_base)
+
+    for item in equipamento_inicial:
+        builder.adicionar_item_inicial(item)
+
+    return builder.get_personagem()
 
 
 def main():
-    print("--- Construção de Personagem com Builder ---")
+    """Função principal que executa a simulação."""
+    print(">>> Iniciando a criação de personagens com Abstract Factory <<<\n")
+    guerreiro = criar_personagem_com_factory(
+        GuerreiroFactory(), "Borin Machado de Pedra")
+    mago = criar_personagem_com_factory(MagoFactory(), "Elara Véu Estrelado")
+    print(guerreiro)
+    print(mago)
 
-    # Instancia o builder que vamos usar
-    builder = BuilderPersonagem()
+    guerreiro.definir_estrategia_ataque(AtaqueFisico())
+    mago.definir_estrategia_ataque(AtaqueMagico())
 
-    # --- Exemplo 1: Usando o Diretor para criar personagens pré-definidos ---
-    print("\n[Usando o Diretor para criar 'presets']\n")
+    print("\n>>> O COMBATE COMEÇA! <<<\n")
 
-    diretor = Diretor(builder)
+    combatentes = [guerreiro, mago]
+    turno = 0
+    while all(p.esta_vivo() for p in combatentes):
+        atacante = combatentes[turno % 2]
+        alvo = combatentes[(turno + 1) % 2]
 
-    gimli = diretor.criar_guerreiro_anao("Gimli")
-    print(gimli)
-    # Note que a Força final é 12 (10 base + 2 bônus racial) e Vigor é 9 (8 base + 1 bônus).
+        print(f"--- Turno de {atacante.nome} ---")
+        atacante.executar_ataque(alvo)
 
-    # Apenas para o exemplo :)
-    legolas = diretor.criar_mago_elfo("Legolas, o Mago?")
-    print(legolas)
-    # Note que a Inteligência final é 12 (10 base + 2 bônus racial).
+        print("-" * 30)
+        time.sleep(1.5)
 
-    # --- Exemplo 2: Usando o Builder diretamente para um personagem customizado ---
-    print("\n[Usando o Builder manualmente para máxima flexibilidade]\n")
+        if not alvo.esta_vivo():
+            break
 
-    raca_orc = Raca("Orc", atributo_bonus=Atributos(forca=3, vigor=-1))
-    classe_barbaro = Classe("Bárbaro")
+        turno += 1
 
-    # O cliente controla a construção passo a passo
-    orc_barbaro = builder.set_nome("Grommash")\
-                         .set_raca(raca_orc)\
-                         .set_classe(classe_barbaro)\
-                         .set_atributos_base(forca=12, inteligencia=3, destreza=6, vigor=9, sorte=4)\
-                         .get_personagem()
-
-    print(orc_barbaro)
-    # Força final será 15 (12 + 3) e Vigor final 8 (9 - 1)
+    print("\n>>> FIM DE COMBATE <<<")
+    vencedor = next(p for p in combatentes if p.esta_vivo())
+    print(f"O grande vencedor é {vencedor.nome}!")
+    print(vencedor)
 
 
 if __name__ == "__main__":
