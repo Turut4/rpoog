@@ -30,7 +30,7 @@ class GuerreiroFactory(IPersonagemFactory):
     """Fábrica concreta para o arquetipo Guerreiro."""
 
     def criar_raca(self) -> Raca:
-        return Raca("An�o", Atributos(forca=2, vigor=2, sorte=-1))
+        return Raca("Anão", Atributos(forca=2, vigor=2, sorte=-1))
 
     def criar_classe(self) -> Classe:
         return Classe("Guerreiro")
@@ -57,7 +57,7 @@ class MagoFactory(IPersonagemFactory):
         return Classe("Mago")
 
     def definir_atributos_base(self) -> dict:
-        return {'forca': 4, 'inteligencia': 10, 'destreza': 8, 'vigor': 5, 'sorte': 7}
+        return {'forca': 4, 'inteligencia': 32, 'destreza': 8, 'vigor': 5, 'sorte': 7}
 
     def criar_equipamento_inicial(self) -> list[Item]:
         item_factory = ItemFactory()

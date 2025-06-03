@@ -10,7 +10,7 @@ A aplicação simula a criação de personagens com diferentes raças e classes 
 
 O código foi modularizado para seguir o princípio da Separação de Responsabilidades, resultando na seguinte estrutura de arquivos:
 
-```
+```text
 rpoog/
 ├── main.py
 ├── rpoog/
@@ -30,13 +30,15 @@ rpoog/
 
 ## 3. Como Executar
 
-1.  Certifique-se de que a estrutura de pastas e arquivos acima esteja correta.
-2.  Abra um terminal na pasta raiz do projeto (a primeira pasta `rpoog`).
-3.  Execute o seguinte comando:
+1. Certifique-se de que a estrutura de pastas e arquivos acima esteja correta.
+2. Abra um terminal na pasta raiz do projeto (a primeira pasta `rpoog`).
+3. Execute o seguinte comando:
+
     ```bash
     python main.py
     ```
-4.  A simulação de criação de personagens e o combate serão exibidos no terminal.
+
+4. A simulação de criação de personagens e o combate serão exibidos no terminal.
 
 ## 4. Padrões de Projeto Utilizados
 
