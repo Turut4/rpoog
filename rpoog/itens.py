@@ -9,8 +9,8 @@ class RaridadeItem(Enum):
 
 class TipoItem(Enum):
     ARMA = "Arma"
-    POCAO = "Po��o"
-    GENERICO = "Gen�rico"
+    POCAO = "Poção"
+    GENERICO = "Genérico"
 
 
 class Item:
