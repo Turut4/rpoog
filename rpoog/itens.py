@@ -62,4 +62,4 @@ class Inventario:
         if not self.itens:
             return "Inventário: Vazio"
         lista_itens = "\n".join([f"  {item}" for item in self.itens])
-        return f"Invent�rio ({len(self.itens)}/{self.capacidade}):\n{lista_itens}"
+        return f"Inventário ({len(self.itens)}/{self.capacidade}):\n{lista_itens}"

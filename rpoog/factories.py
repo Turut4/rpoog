@@ -41,14 +41,14 @@ class GuerreiroFactory(IPersonagemFactory):
     def criar_equipamento_inicial(self) -> list[Item]:
         item_factory = ItemFactory()
         arma = item_factory.criar_item(
-            'arma', nome="Machado de An�o", descricao="Um machado robusto.", peso=5.0, raridade=RaridadeItem.INCOMUM, dano=12)
+            'arma', nome="Machado de Anão", descricao="Um machado robusto.", peso=5.0, raridade=RaridadeItem.INCOMUM, dano=12)
         pocao = item_factory.criar_item('pocao', nome="Poção de Cura Menor",
                                         descricao="Restaura um pouco de vida.", peso=0.5, raridade=RaridadeItem.COMUM, cura=20)
         return [arma, pocao]
 
 
 class MagoFactory(IPersonagemFactory):
-    """Fábrica concreta para o arqu�tipo Mago."""
+    """Fábrica concreta para o arquetipo Mago."""
 
     def criar_raca(self) -> Raca:
         return Raca("Elfo", Atributos(inteligencia=2, destreza=2, vigor=-1))
@@ -62,5 +62,5 @@ class MagoFactory(IPersonagemFactory):
     def criar_equipamento_inicial(self) -> list[Item]:
         item_factory = ItemFactory()
         arma = item_factory.criar_item(
-            'arma', nome="Cajado M�stico", descricao="Canaliza poder arcano.", peso=2.0, raridade=RaridadeItem.INCOMUM, dano=4)
+            'arma', nome="Cajado Místico", descricao="Canaliza poder arcano.", peso=2.0, raridade=RaridadeItem.INCOMUM, dano=4)
         return [arma]

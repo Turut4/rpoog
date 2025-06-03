@@ -32,8 +32,8 @@ def main():
     """Função principal que executa a simulação."""
     print(">>> Iniciando a criação de personagens com Abstract Factory <<<\n")
     guerreiro = criar_personagem_com_factory(
-        GuerreiroFactory(), "Borin Machado de Pedra")
-    mago = criar_personagem_com_factory(MagoFactory(), "Elara Véu Estrelado")
+        GuerreiroFactory(), "Ivar O Aleijado")
+    mago = criar_personagem_com_factory(MagoFactory(), "Gandalf O Cinzento")
     print(guerreiro)
     print(mago)
 
@@ -52,7 +52,7 @@ def main():
         atacante.executar_ataque(alvo)
 
         print("-" * 30)
-        time.sleep(1.5)
+        time.sleep(3)
 
         if not alvo.esta_vivo():
             break
