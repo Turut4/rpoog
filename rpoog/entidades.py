@@ -1,5 +1,3 @@
-# entidades.py
-
 from __future__ import annotations
 from .itens import Inventario, Arma
 from abc import ABC, abstractmethod
